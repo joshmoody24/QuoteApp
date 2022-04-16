@@ -1,0 +1,13 @@
+﻿@model Quote
+
+<h1 class="font-italic">"@Model.QuoteText"</h1> 
+<h2>- @Model.Author.FirstName @Model.Author.LastName</h2>
+<ul class="list-group m-2">
+    <li class="list-group-item">Quote #@Model.QuoteId</li>
+    <li class="list-group-item">Date: @(Model.Date.HasValue ? Model.Date.Value.ToString("D") : "Undated")</li>
+    <li class="list-group-item">Subject: @(Model.Subject?.SubjectName ?? "No Subject")</li>
+    <li class="list-group-item">Citation: @Model.Citation</li>
+</ul>
+<a class="btn btn-primary" asp-action="Index">Return to Quote List</a>
+<a class="btn btn-warning" asp-action="EditQuote" asp-route-id="@Model.QuoteId">Edit Quote</a>
+<a class="btn btn-danger" asp-action="DeleteQuote" asp-route-id="@Model.QuoteId">Delete Quote</a>
